@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+
+  apache:
+  
+  php:
+
+  postgresql:
+
+volumes:
+  moodle:
+  database:
+
+networks:
+  frontend:
+  backend:
