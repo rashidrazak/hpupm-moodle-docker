@@ -3,10 +3,58 @@ version: "3.8"
 services:
 
   apache:
+    container_name: apache
+    restart: unless
+    build:
+      context: "./apache/"
+    depends_on:
+      - php
+      - postgresql
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8000:80"
+    volumes:
+      - "./public_html/:/var/www/html/"
+      - "./moodledata/:/app/moodledata/"
   
   php:
+    continer_name: php
+    restart: unless_stopped
+    build:
+      context: "./php/"
+    networks:
+      - backend
+    volumes:
+      - "./public_html/:/var/www/html/"
+      - "./moodledata/:/app/moodledata/"
 
   postgresql:
+    container_name: postgresql
+    build:
+      context: "./postgresql/"
+    networks:
+      - backend
+    restart: unless_stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./postgresql_data:/var/lib/postgresql/data/pgdata"
+
+  adminer:
+    container_name: adminer
+    restart: unless_stopped
+    build:
+      context: "./adminer/"
+    restart: unless_stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - frontend
+      - backend
 
 volumes:
   moodle:
