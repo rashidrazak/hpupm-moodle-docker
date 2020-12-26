@@ -30,6 +30,17 @@ services:
       - "./public_html/:/var/www/html/"
       - "./moodledata/:/app/moodledata/"
 
+  cron:
+    container_name: cron
+    restart: unless-stopped
+    build:
+      context: "./cron/"
+    networks:
+      - backend
+    volumes:
+      - "./public_html/:/var/www/html/"
+      - "./moodledata/:/app/moodledata/"
+
   postgresql:
     container_name: postgresql
     build:
