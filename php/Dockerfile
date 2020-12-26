@@ -31,10 +31,12 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions && sync \
     intl \
     mbstring \
     mysqli \
+    opcache \
+    openssl \
     pcre \
     pdo_mysql \
     pdo_pgsql \
-    openssl \
+    pgsql \
     shmop \
     soap \
     sockets \
