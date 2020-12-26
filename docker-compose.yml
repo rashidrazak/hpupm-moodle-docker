@@ -4,7 +4,7 @@ services:
 
   apache:
     container_name: apache
-    restart: unless
+    restart: unless-stopped
     build:
       context: "./apache/"
     depends_on:
@@ -20,8 +20,8 @@ services:
       - "./moodledata/:/app/moodledata/"
   
   php:
-    continer_name: php
-    restart: unless_stopped
+    container_name: php
+    restart: unless-stopped
     build:
       context: "./php/"
     networks:
@@ -36,29 +36,25 @@ services:
       context: "./postgresql/"
     networks:
       - backend
-    restart: unless_stopped
+    restart: unless-stopped
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
-      - "./postgresql_data:/var/lib/postgresql/data/pgdata"
+      - "./postgresql_data/:/var/lib/postgresql/data/"
 
   adminer:
     container_name: adminer
-    restart: unless_stopped
+    restart: unless-stopped
     build:
       context: "./adminer/"
-    restart: unless_stopped
+    restart: unless-stopped
     ports:
       - "8080:8080"
     networks:
       - frontend
       - backend
-
-volumes:
-  moodle:
-  database:
 
 networks:
   frontend:
