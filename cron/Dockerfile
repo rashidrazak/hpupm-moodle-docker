@@ -15,39 +15,39 @@ RUN chmod +x /usr/local/bin/install-php-extensions && sync \
     && install-php-extensions \
     bz2 \
     calendar \
-    ctype \
-    curl \
-    dom \
+    # ctype \
+    # curl \
+    # dom \
     exif \
-    fileinfo \
-    filter \
-    ftp \
+    # fileinfo \
+    # filter \
+    # ftp \
     gd \
     gettext \
     gmp \
-    hash \
-    iconv \
-    json \
+    # hash \
+    # iconv \
+    # json \
     intl \
-    mbstring \
+    # mbstring \
     mysqli \
     opcache \
-    openssl \
-    pcre \
+    # openssl \
+    # pcre \
     pdo_mysql \
     pdo_pgsql \
     pgsql \
     shmop \
     soap \
     sockets \
-    sodium \
-    simplexml \
-    spl \
-    tokenizer \
-    xml \
+    # sodium \
+    # simplexml \
+    # spl \
+    # tokenizer \
+    # xml \
     xmlrpc \
-    zip \
-    zlib
+    zip
+    # zlib
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && rm -rf /tmp/*
