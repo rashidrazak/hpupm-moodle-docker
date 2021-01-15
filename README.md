@@ -32,6 +32,7 @@ mkdir moodledata
 ### 1. Populate .env File
 
 Copy the `.env-sample` file and rename the new file as `.env`. Then, populate the `.env` file with correct values.
+Variable `POSTGRES_PASSWORD` is compulsory. `POSTGRES_USER` and `POSTGRES_DB` will have the value of `postgres` if not specified.
 
 ### 2. Start the Stack
 
