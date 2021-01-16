@@ -49,6 +49,8 @@ RUN chmod +x /usr/local/bin/install-php-extensions && sync \
     zip
     # zlib
 
+COPY php.ini $PHP_INI_DIR/php.ini
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && rm -rf /tmp/*
 
