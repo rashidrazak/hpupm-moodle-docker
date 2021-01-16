@@ -29,6 +29,7 @@ services:
     volumes:
       - "./public_html/:/var/www/html/"
       - "./moodledata/:/app/moodledata/"
+      - "./bht_moodledata/:/app/bht_moodledata/"
 
   cron:
     container_name: cron
@@ -40,6 +41,7 @@ services:
     volumes:
       - "./public_html/:/var/www/html/"
       - "./moodledata/:/app/moodledata/"
+      - "./bht_moodledata/:/app/bht_moodledata/"
 
   postgresql:
     container_name: postgresql
