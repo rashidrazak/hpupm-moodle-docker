@@ -11,6 +11,15 @@ cd /root
 git clone https://github.com/rashidrazak/hpupm-moodle-docker.git
 ```
 
+### 2. Prepare Binded Directory
+
+Make sure these directories exist. If not, simply run `mkdir` to create them.
+
+- public_html
+- moodledata
+- bht_moodledata
+- postgresql_data
+
 ### 2. Download Moodle
 
 Moodle need to be put inside `public_html` directory.
