@@ -42,6 +42,18 @@ To run the Moodle stack, use the following command:
 docker-compose up -d
 ```
 
+### 3. Install Moodle
+
+To install Moodle via web installer, visit `http://localhost:8000` and follow the wizard.
+
+`config.php` additional setup:
+
+```php
+$CFG->behat_dataroot = '/app/bht_moodledata';
+$CFG->behat_prefix = 'bht_';
+$CFG->behat_wwwroot = 'http://127.0.0.1:8000';
+```
+
 ## Stopping the Stack
 
 ```bash

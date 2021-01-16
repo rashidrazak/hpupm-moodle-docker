@@ -9,6 +9,7 @@
 .env
 public_html/*
 moodledata/*
+bht_moodledata/*
 postgresql_data/*
 
 # User-specific stuff
