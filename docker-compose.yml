@@ -16,8 +16,8 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - "./public_html/:/var/www/html/"
-      - "./moodledata/:/app/moodledata/"
+      - "./public_html:/var/www/html:rw"
+      - "./moodledata:/app/moodledata:rw"
   
   php:
     container_name: php
@@ -27,9 +27,9 @@ services:
     networks:
       - backend
     volumes:
-      - "./public_html/:/var/www/html/"
-      - "./moodledata/:/app/moodledata/"
-      - "./bht_moodledata/:/app/bht_moodledata/"
+      - "./public_html:/var/www/html:rw"
+      - "./moodledata:/app/moodledata:rw"
+      - "./bht_moodledata:/app/bht_moodledata:rw"
 
   cron:
     container_name: cron
@@ -39,9 +39,9 @@ services:
     networks:
       - backend
     volumes:
-      - "./public_html/:/var/www/html/"
-      - "./moodledata/:/app/moodledata/"
-      - "./bht_moodledata/:/app/bht_moodledata/"
+      - "./public_html:/var/www/html:rw"
+      - "./moodledata:/app/moodledata:rw"
+      - "./bht_moodledata:/app/bht_moodledata:rw"
 
   postgresql:
     container_name: postgresql
@@ -55,9 +55,9 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${POSTGRESQL_PORT}:5432"
     volumes:
-      - "./postgresql_data/:/var/lib/postgresql/data/"
+      - "./postgresql_data:/var/lib/postgresql/data:rw"
 
   adminer:
     container_name: adminer
@@ -66,7 +66,7 @@ services:
       context: "./adminer/"
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "${ADMINER_PORT}:8080"
     networks:
       - frontend
       - backend
